@@ -434,14 +434,6 @@ Frontend & Machine Learning Developer
 
 ---
 
-## Project Stats
-
-![GitHub stars](https://img.shields.io/github/stars/kamau552/africa-co2-predictor?style=social)
-![GitHub forks](https://img.shields.io/github/forks/kamau552/africa-co2-predictor?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/kamau552/africa-co2-predictor?style=social)
-
----
-
 <div align="center">
 
 **⭐ Star this repository if you find it helpful!**
