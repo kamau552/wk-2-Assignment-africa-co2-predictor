@@ -3,7 +3,7 @@
    receives { predicted_emission, historical: [...rows...] } and draws charts.
 */
 
-const API_BASE = "http://127.0.0.1:8000"; // change if needed
+const API_BASE = "https://wk-2-assignment-africa-co2-predictor.onrender.com"
 
 // Countries (matches your CSV)
 const countries = ["Kenya","Nigeria","South Africa","Egypt","Ethiopia","Ghana"];
