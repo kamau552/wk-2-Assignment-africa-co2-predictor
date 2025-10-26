@@ -23,7 +23,6 @@ A machine learning web application that predicts CO₂ emissions across African 
 - [API Documentation](#-api-documentation)
 - [Usage](#-usage)
 - [Model Training](#-model-training)
-- [Screenshots](#-screenshots)
 - [Future Improvements](#-future-improvements)
 - [Contributing](#-contributing)
 - [License](#-license)
@@ -48,27 +47,22 @@ This tool supports environmental analysis and policy planning efforts in Africa 
 
 ## ✨ Features
 
-**Predictive Analytics** - ML-powered CO₂ emission predictions  
-**Interactive Visualizations** - Line and bar charts using Chart.js  
-**Historical Data** - Complete dataset from 2000-2020  
-**Country Comparison** - Side-by-side emission comparisons  
-**Custom Predictions** - Manual input for custom scenarios  
-**Dark Mode** - Eye-friendly dark theme with glassmorphism  
-**Responsive Design** - Works on desktop, tablet, and mobile  
-**Real-time Updates** - Instant prediction results  
-**RESTful API** - Well-documented FastAPI endpoints  
+- **Predictive Analytics** - ML-powered CO₂ emission predictions  
+- **Interactive Visualizations** - Line and bar charts using Chart.js  
+- **Historical Data** - Complete dataset from 2000-2020  
+- **Country Comparison** - Side-by-side emission comparisons  
+- **Custom Predictions** - Manual input for custom scenarios  
+- **Dark Mode** - Eye-friendly dark theme with glassmorphism  
+- **Responsive Design** - Works on desktop, tablet, and mobile  
+- **Real-time Updates** - Instant prediction results  
+- **RESTful API** - Well-documented FastAPI endpoints  
 
 ---
-
-## 🎬 Demo
-
-### Live Preview
-👉 [View Live Demo](https://your-demo-link.com) *(Add your deployment link)*
 
 ### Quick Start
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/africa-co2-predictor.git
+git clone https://github.com/kamau552/africa-co2-predictor.git
 
 # Navigate to backend
 cd africa-co2-predictor/backend
@@ -359,18 +353,6 @@ joblib.dump(model, 'africa_co2_model.pkl')
 - **MAE:** ~0.15 metric tons
 - **RMSE:** ~0.20 metric tons
 
----
-
-## 📸 Screenshots
-
-### Light Mode
-![Light Mode Dashboard](https://via.placeholder.com/800x500?text=Light+Mode+Screenshot)
-
-### Dark Mode
-![Dark Mode Dashboard](https://via.placeholder.com/800x500?text=Dark+Mode+Screenshot)
-
-### Mobile View
-![Mobile Responsive](https://via.placeholder.com/400x800?text=Mobile+View)
 
 ---
 
@@ -448,14 +430,6 @@ Frontend & Machine Learning Developer
 - Chart.js for beautiful visualizations
 - FastAPI for the amazing framework
 - The open-source community
-
----
-
-## Project Stats
-
-![GitHub stars](https://img.shields.io/github/stars/kamau552/africa-co2-predictor?style=social)
-![GitHub forks](https://img.shields.io/github/forks/kamau552/africa-co2-predictor?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/kamau552/africa-co2-predictor?style=social)
 
 ---
 
