@@ -18,7 +18,6 @@ dist/
 *.spec
 
 # === MODEL & DATA FILES ===
-backend/africa_co2_model.pkl
 backend/*.csv
 backend/*.json
 backend/*.xlsx

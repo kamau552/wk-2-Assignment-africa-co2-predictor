@@ -1,9 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from typing import Union
 import pandas as pd
+import os
 import joblib
 import numpy as np
+
 
 app = FastAPI(title="Africa CO₂ Emission Prediction API")
 
@@ -14,6 +17,7 @@ app.add_middleware(
         "http://localhost:5500",
         "http://127.0.0.1:5500",
         "http://localhost:3000",
+        "https://wk-2-assignment-africa-co2-predicto-two.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -43,11 +47,11 @@ def home():
 
 # Combined endpoint that handles both country name and manual input
 @app.post("/predict")
-def predict_co2(request: dict):
+def predict_co2(request: Union[CO2Input, CountryInput]):
     try:
-        # Check if it's a country-based prediction
-        if "country" in request:
-            country_name = request["country"]
+        # Handle country-based prediction
+        if isinstance(request, CountryInput):
+            country_name = request.country  # ✅ dot notation instead of ["country"]
             
             # Get country data
             country_data = data[data["Country"] == country_name]
@@ -66,20 +70,15 @@ def predict_co2(request: dict):
             future_gdp = latest_row["GDP"] * 1.2
             future_pop = latest_row["Population"] * 1.1
             
-            # Create DataFrame with proper column names to avoid warning
             X_pred = pd.DataFrame([[
-                future_year,
-                future_temp,
-                future_energy,
-                future_gdp,
-                future_pop,
-                country_code
+                future_year, future_temp, future_energy, future_gdp, future_pop, country_code
             ]], columns=["Year", "Avg_Temperature", "Energy_Use", "GDP", "Population", "Country_Code"])
             
             prediction = model.predict(X_pred)[0]
             
-            # Return historical data + prediction
-            historical = country_data[["Year", "CO2_Emissions", "Avg_Temperature", "Energy_Use", "GDP", "Population"]].to_dict(orient="records")
+            historical = country_data[[
+                "Year", "CO2_Emissions", "Avg_Temperature", "Energy_Use", "GDP", "Population"
+            ]].to_dict(orient="records")
             
             return {
                 "country": country_name,
@@ -92,18 +91,15 @@ def predict_co2(request: dict):
                 "historical": historical
             }
         
-        # Manual input prediction
-        else:
-            year = int(request["Year"])
-            avg_temp = float(request["Avg_Temperature"])
-            energy_use = float(request["Energy_Use"])
-            gdp = float(request["GDP"])
-            population = float(request["Population"])
-            country_code = float(request["Country_Code"])
-            
-            # Create DataFrame with proper column names
+        # Handle manual numeric input
+        elif isinstance(request, CO2Input):
             X_pred = pd.DataFrame([[
-                year, avg_temp, energy_use, gdp, population, country_code
+                request.Year,
+                request.Avg_Temperature,
+                request.Energy_Use,
+                request.GDP,
+                request.Population,
+                request.Country_Code
             ]], columns=["Year", "Avg_Temperature", "Energy_Use", "GDP", "Population", "Country_Code"])
             
             prediction = model.predict(X_pred)[0]
@@ -116,8 +112,14 @@ def predict_co2(request: dict):
     except Exception as e:
         return {"error": str(e)}
 
-# ✅ Add a GET endpoint for testing
+#  Add a GET endpoint for testing
 @app.get("/countries")
 def get_countries():
     """Return list of available countries"""
     return {"countries": data["Country"].unique().tolist()}
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "africa_co2_model.pkl")
+
+    
