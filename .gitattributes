@@ -1,0 +1,42 @@
+# ==========================================================
+# Git Attributes for africa-co2-predictor
+# Ensures consistent line endings and better diff behavior
+# ==========================================================
+
+# === Line endings ===
+# Use LF for all text files to prevent Windows/Mac/Linux issues
+* text=auto eol=lf
+
+# === Treat common file types as text ===
+*.py text
+*.js text
+*.html text
+*.css text
+*.md text
+*.txt text
+*.json text
+*.yml text
+*.yaml text
+*.csv text
+
+# === Handle notebooks ===
+*.ipynb filter=strip-notebook diff=jupyternotebook merge=union
+
+# === Binary files (don’t diff) ===
+*.pkl binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary
+*.ico binary
+
+# === OS / Editor metadata ===
+.DS_Store binary
+Thumbs.db binary
+
+# === Enforce LF endings for scripts ===
+*.sh text eol=lf
+
+# === Preserve executable bit for scripts ===
+*.sh text eol=lf

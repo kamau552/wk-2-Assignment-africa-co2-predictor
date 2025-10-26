@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Africa CO₂ Emissions Predictor</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <h1>Africa CO₂ Emission Predictor</h1>
+        <p class="tag">Visualizing historical data & ML predictions SDG 13</p>
+      </div>
+      <div class="controls">
+        <label class="theme-toggle">
+          <input id="modeToggle" type="checkbox" />
+          <span class="label">Dark</span>
+        </label>
+      </div>
+    </header>
+
+    <main class="container">
+      <aside class="sidebar">
+        <div class="card">
+          <h3>Choose Country</h3>
+          <select id="countrySelect" aria-label="Select Country"></select>
+          <button id="fetchBtn" class="btn" style="margin-top:12px">Load Country Data & Predict</button>
+        </div>
+
+        <div class="card" id="summaryCard">
+          <h3 id="summaryTitle">Country Summary</h3>
+          <div class="summary-grid">
+            <div class="stat">
+              <p class="label">Predicted CO₂</p><p id="predictedVal" class="value">—</p>
+            </div>
+            <div class="stat">
+              <p class="label">Last recorded</p><p id="lastYearVal" class="value">—</p>
+            </div>
+            <div class="stat">
+              <p class="label">Change</p><p id="changeVal" class="value">—</p>
+            </div>
+            <div class="stat">
+              <p class="label">Trend</p><p id="trendVal" class="value">—</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Quick Tracker</h3>
+          <ul class="tracker">
+            <li><span>Temp</span><strong id="trackTemp">—</strong></li>
+            <li><span>Energy Use</span><strong id="trackEnergy">—</strong></li>
+            <li><span>GDP (B)</span><strong id="trackGDP">—</strong></li>
+            <li><span>Population (M)</span><strong id="trackPop">—</strong></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Custom Prediction</h3>
+          <form id="customForm">
+            <label>Year <input id="cYear" type="number" value="2030" required></label>
+            <label>Avg Temp (°C) <input id="cTemp" step="0.1" type="number" value="25.0" required></label>
+            <label>Energy Use <input id="cEnergy" type="number" value="600" required></label>
+            <label>GDP (B USD) <input id="cGDP" step="0.1" type="number" value="40.0" required></label>
+            <label>Population (M) <input id="cPop" step="0.1" type="number" value="50.0" required></label>
+            <label>Country Code <input id="cCode" step="1" type="number" value="0" required></label>
+            <button type="submit" class="btn">Generate Prediction</button>
+            <div id="customResult" class="result"></div>
+          </form>
+        </div>
+      </aside>
+
+      <section class="main-area">
+        <div class="card chart-card">
+          <div class="chart-header">
+            <div>
+              <h3 id="chartTitle">CO₂ Emissions: Historical + Prediction</h3>
+              <p class="muted" id="chartSub">Select a country and press "Load Country Data & Predict".</p>
+            </div>
+            <div id="legendWrap" class="muted">• Historical • Predicted</div>
+          </div>
+          <canvas id="co2Chart" height="180"></canvas>
+        </div>
+
+        <div class="card">
+          <h3>Year-by-Year Data</h3>
+          <div class="table-wrap">
+            <table id="dataTable"><thead><tr><th>Year</th><th>CO₂</th><th>Temp</th><th>Energy</th><th>GDP</th><th>Population</th></tr></thead><tbody></tbody></table>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Comparison (Latest Year)</h3>
+          <canvas id="barChart"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <small>Backend: <code>http://127.0.0.1:8000</code> — API: POST /predict</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

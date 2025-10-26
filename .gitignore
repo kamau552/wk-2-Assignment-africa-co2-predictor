@@ -1,0 +1,68 @@
+# === PYTHON / FASTAPI BACKEND ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Compiled / cached bytecode
+backend/__pycache__/
+backend/*.pyc
+
+# Build and packaging
+build/
+dist/
+*.egg-info/
+*.egg
+*.manifest
+*.spec
+
+# === MODEL & DATA FILES ===
+backend/africa_co2_model.pkl
+backend/*.csv
+backend/*.json
+backend/*.xlsx
+
+# === VIRTUAL ENVIRONMENTS ===
+venv/
+env/
+.venv/
+ENV/
+
+# === NOTEBOOK OUTPUT ===
+*.ipynb_checkpoints/
+CO2_Emission_Prediction.ipynb
+
+# === LOGS & TEMP FILES ===
+*.log
+*.tmp
+*.bak
+*.old
+*.orig
+
+# === ENVIRONMENT VARIABLES ===
+.env
+.env.*
+*.env
+
+# === FRONTEND (STATIC) ===
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.cache/
+frontend/*.log
+
+# === IDE / EDITOR ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.tmp
+*.orig
+*.old
+
+# === OS / SYSTEM FILES ===
+.DS_Store
+Thumbs.db
+desktop.ini
