@@ -18,7 +18,6 @@ dist/
 *.spec
 
 # === MODEL & DATA FILES ===
-backend/*.csv
 backend/*.json
 backend/*.xlsx
 
