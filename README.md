@@ -23,7 +23,6 @@ A machine learning web application that predicts CO₂ emissions across African 
 - [API Documentation](#-api-documentation)
 - [Usage](#-usage)
 - [Model Training](#-model-training)
-- [Screenshots](#-screenshots)
 - [Future Improvements](#-future-improvements)
 - [Contributing](#-contributing)
 - [License](#-license)
